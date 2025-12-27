@@ -16,7 +16,7 @@ const Users = () => {
     }, []);
 
     const getUsers = () => {
-        Axios.get(process.env.REACT_APP_ENDPOINT + '/api/v1/getusers') //Axios.get('http://localhost:8080/api/v1/getusers')
+        Axios.get(process.env.REACT_APP_ENDPOINT + '/v1/getusers') //Axios.get('http://localhost:8080/api/v1/getusers')
              .then(response =>{
                 setUsers(response.data || []);
              })
@@ -33,7 +33,7 @@ const Users = () => {
             name: data.name,
         }
 
-        Axios.post(process.env.REACT_APP_ENDPOINT + '/api/v1/adduser', payload) //Axios.post('http://localhost:8080/api/v1/adduser', payload)
+        Axios.post(process.env.REACT_APP_ENDPOINT + '/v1/adduser', payload) //Axios.post('http://localhost:8080/api/v1/adduser', payload)
         .then( () =>{
                 getUsers();
                 setSubmitted(false);
@@ -52,7 +52,7 @@ const Users = () => {
             name: data.name,
         }
 
-        Axios.put(process.env.REACT_APP_ENDPOINT + '/api/v1/updateuser', payload) //Axios.put('http://localhost:8080/api/v1/updateuser', payload)
+        Axios.put(process.env.REACT_APP_ENDPOINT + '/v1/updateuser', payload) //Axios.put('http://localhost:8080/api/v1/updateuser', payload)
         .then( () =>{
                 getUsers();
                 setSubmitted(false);
@@ -65,7 +65,7 @@ const Users = () => {
 
     const deleteUser = (data) => {
 
-        Axios.delete(process.env.REACT_APP_ENDPOINT + `/api/v1/deleteuser/${data.id}`) //Axios.delete(`http://localhost:8080/api/v1/deleteuser/${data.id}`)
+        Axios.delete(process.env.REACT_APP_ENDPOINT + `/v1/deleteuser/${data.id}`) //Axios.delete(`http://localhost:8080/api/v1/deleteuser/${data.id}`)
         .then( () =>{
                 getUsers();
              })
